@@ -1,13 +1,25 @@
 
-const height = document.getElementById("height")
-const length = document.getElementById("length")
-const grid = document.createElement("table")
-document.body.appendChild(grid)
+class Grid {
+    
+    constructor(){
+        this.height = document.getElementById("height")
+        this.length1 = document.getElementById("length")
+        this.grid = document.createElement("table")
+        this.btn = document.getElementById("myForm")
+        this.btn.addEventListener("submit", (event) => {
+            event.preventDefault();
+            this.createGrid();
+        })
+        this.startX = document.getElementById("startX")
+        this.startY = document.getElementById("startY")
+        this.endX = document.getElementById("endX")
+        this.endY = document.getElementById("endY")
+    }
 
-function createGrid(){
-    grid.innerHTML = "";
-    let h = Number(height.value)
-    let l = Number(length.value)
+    createGrid() {
+    this.grid.innerHTML = "";
+    let h = Number(this.height.value)
+    let l = Number(this.length1.value)
 
     for(let y = 0; y < h; y++){
         let row = document.createElement("tr")
@@ -15,10 +27,19 @@ function createGrid(){
             let newCell = document.createElement("td")
             row.appendChild(newCell)
         }
-        grid.appendChild(row)
+        this.grid.appendChild(row)
+        }
+    document.body.appendChild(this.grid);
+    }
+    markStart(){
+        this.row[y].newCell[x].id="start"
+    }
+    markEnd(){
+        this.row[y].newCell[x].id="end"
     }
 };
-document.getElementById("myForm").addEventListener("submit", function(event){
-    event.preventDefault();
-    createGrid()
-})
+let Gridfunc = new Grid();
+// document.getElementById("myForm").addEventListener("submit", function(event){
+//     event.preventDefault();
+//     Gridfunc
+// })
