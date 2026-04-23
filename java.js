@@ -9,11 +9,19 @@ class Grid {
         this.btn.addEventListener("submit", (event) => {
             event.preventDefault();
             this.createGrid();
+            this.markEnd();
+            this.markStart();
+            //this.BFS();
         })
         this.startX = document.getElementById("startX")
         this.startY = document.getElementById("startY")
         this.endX = document.getElementById("endX")
         this.endY = document.getElementById("endY")
+        this.startCoord = [Number(startX), Number(startY)]
+        this.endCoord = [Number(endX), Number(endY)]
+        this.visited = []
+        this.path = []
+        this.prime = {}
     }
 
     createGrid() {
@@ -32,14 +40,19 @@ class Grid {
     document.body.appendChild(this.grid);
     }
     markStart(){
-        this.row[y].newCell[x].id="start"
+        this.grid.rows[this.startY.value-1].cells[this.startX.value-1].id = "start"
     }
     markEnd(){
-        this.row[y].newCell[x].id="end"
+        this.grid.rows[this.endY.value-1].cells[this.endX.value-1].id = "end"
+    }
+    BFS(){
+        while(true){
+            // 4 trys 4 ifs -> 1 try 1 if
+            //If after Try to see if end goal is in visited[]
+            //in each if check if visited, if wall
+            //If true add add border of cell to path note down child and parent relationship in prime{} and change the color of cell youre in USE UNSHIFT
+            //At the end remove the last thing in path ex: pop
+        }
     }
 };
 let Gridfunc = new Grid();
-// document.getElementById("myForm").addEventListener("submit", function(event){
-//     event.preventDefault();
-//     Gridfunc
-// })
